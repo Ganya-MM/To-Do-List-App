@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="todos">
+    <form (submit)="addTodo()">
+        <input 
+        type="text"
+        name="inputTodo"
+        placeholder="Enter todo..."
+        class="todo-input"
+        [(ngModel)]="inputTodo"
+        >
+        <input type="submit" value="ADD TODO" class="todo-submit">
+    </form>
+    <div  *ngFor="let todo of todos; let i = index;" class="todo {{(todo.completed ? 'done' : '')}}">
+        <div class="id">{{ i }}</div>
+        <div class="content" (click)="toggleDone(i)">{{ todo.content }}</div>
+        <button class="delete" (click)="deleteTodo(i)">Remove</button>
+    </div>
+</div>
+</body>
+</html>
